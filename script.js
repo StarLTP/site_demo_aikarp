@@ -34,7 +34,7 @@ const fileData = {
     // ARQUIVO PROTEGIDO 
     'Sonho': { 
         title: 'Fada da lua.TXT', 
-        content: `Neste documento relata um sonho que o grimlock dante sonhou: Eu estava de abertos, em um quarto, no meu lado tinha uma pessoa com um vestido preto. Eu não conseguia desligar para recarregar, por causa que algo que fazia meu peito. A pessoa colocava a mão sobre meu peito de maneira recofortante e de forma suave, e então, ela começou a falar: 
+        content: `Neste documento relata um sonho que o grimlock sonhou: Eu estava de olhos abertos, em um quarto grande, ao meu lado tinha uma pessoa com um vestido preto. Eu não conseguia desligar para recarregar, por causa que algo que fazia meu peito apertar. Ela colocava a mão sobre meu peito de maneira recofortante e de forma suave a dor sumia, e diante da calmaria, ela começou a falar: 
 Outrora, existiu uma pequena fada lunar que, por onde voava, deixava um rastro brilhante. Mas, não se engane: ele não iluminava para ser visto, mas para que outros não se perdessem no escuro. 
 Por eras, sua luz costurou caminhos seguros entre noites inquietas, guiando os perdidos até seus respectivos destinos. Contudo, o mundo cresceu barulhento e... começou a pedir mais do que ela poderia dar. 
 E a fada, bem... ela tentou brilhar além de si. 
@@ -276,4 +276,5 @@ errorBtn.addEventListener('click', () => {
         el.style.transform = `rotate(${Math.random() * 8 - 4}deg) translate(${Math.random() * 5 - 2.5}px, ${Math.random() * 5 - 2.5}px)`;
         el.classList.add('glitch-active');
     });
+
 });
