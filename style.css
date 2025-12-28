@@ -1,0 +1,219 @@
+:root {
+    --primary-color: #33ff00; /* Verde Terminal (Default) */
+    --bg-color: #050a05; /* Fundo quase preto */
+    --glitch-color: #00ffea;
+    --overlay-color: rgba(0, 20, 0, 0.2);
+}
+
+/* --- ESTILO PADRÃO CRT --- */
+body {
+    margin: 0; padding: 0;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    overflow: hidden;
+    height: 100vh;
+    text-shadow: 0 0 5px var(--primary-color);
+}
+/* EFEITO CRT (Linhas de varredura e vinheta) */
+.crt-overlay {
+    position: fixed; top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+    z-index: 999;
+}
+/* --- MOLDURA DO MONITOR RESPONSIVA --- */
+#monitor-frame {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw; height: 90vh;
+    max-width: 1000px; max-height: 700px;
+    padding: 30px; 
+    border: 5px solid var(--primary-color); 
+    border-radius: 30px;
+    box-shadow: 0 0 50px rgba(51, 255, 0, 0.5), inset 0 0 20px rgba(51, 255, 0, 0.4);
+    overflow: hidden; 
+    z-index: 10;
+}
+#login-screen {
+    position: static; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    height: 100%; width: 100%; position: relative;
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+.input-container { margin-top: 20px; display: flex; align-items: center; }
+input {
+    background: transparent; border: none;
+    border-bottom: 2px solid var(--primary-color);
+    color: var(--primary-color); font-family: 'VT323', monospace;
+    font-size: 1.5rem; outline: none; width: 300px;
+    text-transform: uppercase;
+}
+/* --- LINHA DE GHOSTING DESCENDO (ANIMAÇÃO) --- */
+.ghosting-line {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 1px; 
+    background: linear-gradient(90deg, transparent 0%, var(--primary-color) 50%, transparent 100%);
+    opacity: 0.3;
+    animation: scanline-move 8s infinite linear; 
+}
+@keyframes scanline-move {
+    0% { top: 0; } 100% { top: 100%; } 
+}
+/* HINT ESCONDIDA */
+#hidden-hint {
+    position: absolute; left: 5%; top: 50%; 
+    transform: translateY(-50%); 
+    display: flex; flex-direction: column; gap: 10px;
+    opacity: 0; transition: opacity 0.5s; pointer-events: none;
+}
+.hint-word { font-size: 2rem; display: none; }
+
+/* --- TELA DE LOADING --- */
+#loading-screen {
+    display: none; 
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: var(--bg-color);
+    flex-direction: column; align-items: center; justify-content: center;
+    z-index: 50; text-align: center;
+}
+#loading-text {
+    font-size: 2.5rem; margin-bottom: 40px;
+    animation: blink 1s step-end infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+.progress-bar-container {
+    width: 70%; height: 15px;
+    border: 2px solid var(--primary-color);
+    background: rgba(0, 50, 0, 0.3);
+    margin-bottom: 20px; position: relative; overflow: hidden;
+}
+#progress-bar-fill {
+    height: 100%; width: 0%; 
+    background-color: var(--primary-color);
+    transition: width 0.1s linear;
+}
+.status-message { font-size: 1.2rem; color: var(--glitch-color); opacity: 0.8; }
+
+
+/* --- TELA DO SISTEMA SECUNDÁRIO --- */
+#main-system {
+    display: none; 
+    height: 100%;
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 200px 1fr;
+}
+header.hud {
+    grid-column: 1 / -1; border-bottom: 2px solid var(--primary-color);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 20px; background: rgba(0, 50, 0, 0.3);
+}
+aside.sidebar {
+    border-right: 2px solid var(--primary-color);
+    padding: 20px; display: flex; flex-direction: column; gap: 15px;
+}
+.tab { cursor: pointer; padding: 5px; border: 1px solid transparent; }
+.tab:hover { border: 1px solid var(--primary-color); background: rgba(51, 255, 0, 0.1); }
+main.content-area { padding: 30px; overflow-y: auto; }
+.content-section { display: none; }
+.content-section.active { display: block; }
+.folder-grid { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
+.folder {
+    border: 2px solid var(--primary-color); padding: 20px;
+    width: 120px; text-align: center; cursor: pointer; transition: 0.3s;
+}
+.folder:hover { background: var(--primary-color); color: var(--bg-color); }
+.folder-icon { font-size: 2rem; margin-bottom: 5px; }
+#file-viewer {
+    margin-top: 30px; border: 1px dashed var(--primary-color);
+    padding: 20px; display: none;
+}
+#file-content {
+    min-height: 100px; 
+    font-size: 1.2rem;
+    white-space: pre-wrap;
+}
+.placeholder-img {
+    width: 100%; height: 200px;
+    background: repeating-linear-gradient(45deg, #002200, #002200 10px, #001100 10px, #001100 20px);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 15px; border: 1px solid var(--primary-color);
+}
+/* BOTÃO DE FECHAR */
+.close-btn {
+    cursor: pointer;
+    color: red;
+    font-size: 1.5rem;
+    padding: 5px 10px;
+    border: 1px dashed red;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    background: red;
+    color: var(--bg-color);
+    box-shadow: 0 0 10px red;
+}
+/* HUD DE SENHA DA PASTA SONHO */
+#sonho-password-hud {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px dashed var(--primary-color);
+}
+/* BOTÃO DE ERRO */
+.danger-btn {
+    margin-top: auto; color: red;
+    border: 1px solid red; padding: 10px;
+    cursor: pointer; text-align: center;
+    animation: pulse 2s infinite;
+}
+/* CONFIGURAÇÕES DE DISPLAY */
+.color-box {
+    padding: 10px;
+    border: 2px solid var(--primary-color);
+    cursor: pointer;
+    color: black;
+    font-size: 1rem;
+    text-shadow: none;
+    transition: all 0.3s;
+}
+.color-box:hover {
+    box-shadow: 0 0 10px var(--primary-color);
+}
+/* --- ANIMAÇÕES DE GLITCH E FALHA --- */
+.glitch-active {
+    animation: glitch-anim 0.3s infinite;
+    color: var(--glitch-color); background: var(--bg-color);
+    padding: 5px;
+}
+@keyframes glitch-anim {
+    0% { transform: translate(0) } 20% { transform: translate(-2px, 2px) }
+    40% { transform: translate(-2px, -2px) } 60% { transform: translate(2px, 2px) }
+    80% { transform: translate(2px, -2px) } 100% { transform: translate(0) }
+}
+@keyframes pulse {
+    0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; }
+}
+/* CLASSE DE FALHA FINAL (ativada pelo JS) */
+body.system-failure {
+    --primary-color: #b026ff; 
+    --bg-color: #1a001a;
+    --glitch-color: #ff0055;
+    animation: crt-shake 0.1s infinite;
+}
+body.system-failure * {
+    text-shadow: 4px 0px 2px rgba(255, 0, 255, 0.7), -4px 0px 2px rgba(0, 255, 255, 0.7); 
+}
+@keyframes crt-shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}

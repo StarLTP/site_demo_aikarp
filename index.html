@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Backup Secundário - Grimlock Dante</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="crt-overlay"></div>
+
+    <div id="monitor-frame"> 
+
+        <div id="login-screen">
+            <h1>SISTEMA SECUNDÁRIO DE ARQUIVOS</h1>
+            <div class="input-container">
+                <span class="prompt">> INSERIR SENHA:</span>
+                <input type="text" id="password-input" autocomplete="off" autofocus>
+            </div>
+            
+            <div id="hidden-hint">
+                <div class="hint-word">PARAÍSO</div>
+                <div class="hint-word">PURGATÓRIO</div>
+                <div class="hint-word">INFERNO</div>
+            </div>
+        </div>
+
+        <div id="loading-screen">
+            <h1 id="loading-text">CARREGANDO SISTEMA...</h1>
+            <p style="font-size: 0.9rem; margin-top: -30px;">EXALVOR TEC'S V0.2</p>
+            <div class="progress-bar-container">
+                <div id="progress-bar-fill"></div>
+            </div>
+            <p class="status-message">INICIANDO MÓDULO BACKUP_DANTE.EXE...</p>
+        </div>
+        <div class="ghosting-line"></div> 
+    </div>
+
+    <div id="main-system">
+        <header class="hud">
+            <span>GRIMLOCK: GL_P_002</span>
+            <span>STATUS: ATIVO</span>
+            <span>MEMÓRIA: 650KB (CACHE SECUNDÁRIO)</span>
+        </header>
+
+        <aside class="sidebar">
+            <div class="tab" onclick="openSection('inicio')">> INÍCIO</div>
+            <div class="tab" onclick="openSection('logs')">> LOGS</div>
+            <div class="tab" onclick="openSection('config')">> CONFIG</div>
+            
+            <div class="danger-btn" id="error-btn">ABRIR SISTEMA PRINCIPAL</div>
+        </aside>
+
+        <main class="content-area">
+            <div id="inicio-section" class="content-section active">
+                <h2>ARQUIVOS LOCAIS:</h2>
+                <div class="folder-grid">
+                    <div class="folder" onclick="openFile('Aprendizagem')"><div class="folder-icon">📁</div>Sistema de Aprendizagem</div>
+                    <div class="folder" onclick="openFile('Canto_II')"><div class="folder-icon">📁</div>Despertar</div>
+                    <div class="folder" onclick="openFile('Canto_III')"><div class="folder-icon">📁</div>Pai?</div>
+                    <div class="folder" onclick="openFile('Virgilio')"><div class="folder-icon">📁</div>Recarga</div>
+                    <div class="folder" onclick="openFile('Beatriz')"><div class="folder-icon">📁</div>Outros</div>
+                    <div class="folder" onclick="openFile('Sonho')"><div class="folder-icon">🔒</div>Sonho</div>
+                </div>
+
+                <div id="file-viewer">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3>Visualizando Arquivo: <span id="file-title"></span></h3>
+                        <span class="close-btn" onclick="closeFileViewer()">[ X ]</span> 
+                    </div>
+                    <div class="placeholder-img">
+                        [Dados visuais corrompidos]
+                    </div>
+                    
+                    <div id="sonho-password-hud" style="display:none;">
+                        <p>ARQUIVO PROTEGIDO. SENHA REQUERIDA:</p>
+                        <div class="input-container">
+                            <span class="prompt">> SENHA:</span>
+                            <input type="text" id="sonho-input" autocomplete="off">
+                        </div>
+                    </div>
+                    
+                    <p id="file-content"></p>
+                    <p>> Fim do arquivo.</p>
+                </div>
+            </div>
+            
+            <div id="logs-section" class="content-section">
+                </div>
+            
+            <div id="config-section" class="content-section">
+                <h2>CONFIGURAÇÕES DE DISPLAY:</h2>
+                <p>ALTERAR COR DO TERMINAL (PRIMARY_COLOR):</p>
+                <div class="color-options" style="display: flex; gap: 15px; margin-top: 10px;">
+                    <div class="color-box" data-color="#33ff00" style="background-color: #33ff00;" onclick="changeTheme(this)">VERDE</div>
+                    <div class="color-box" data-color="#00ffff" style="background-color: #00ffff;" onclick="changeTheme(this)">AZUL</div>
+                    <div class="color-box" data-color="#ffcc00" style="background-color: #ffcc00;" onclick="changeTheme(this)">ÂMBAR</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
