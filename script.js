@@ -25,7 +25,7 @@ let typewriterTimeout;
 
 // DADOS DO SISTEMA 
 const fileData = {
-    'Aprendizagem': { title: 'Aprendizagem', content: "Depois da minha reativação fui ensinado pelo Ashen a pescar, será armazenado, como: pegar a vara depesca, colocar os objetos necessarios, e arremassar ao mar, depois puxar quando o peixe, Fisgar em seguida pegar o peixe e tentar ligar a grelha, mas parar antes pois não tem dados suficientes para ligar a grelha e devolver o peixe ao mar. Depois de uma carga completa analisei meu arredor e numa busca encontrei o zethu junto com o outro modelo de grimlock, e depois de uma serie de dados que foram direcionados para outro arquivo, fomos tentar cozinhar, e neste momento meu sistema entrou em pane, parece que não fui feito para cozinhar, entretanto queria poder ser mais util. Tentei realizar testes no meu proprio sistema mas uma serie de erros cobriu meu sistema, e meu nucleo foi desligado, senti o valor 0, entretanto os dados fornecidos parece ter auxiliado o ashen, mas ele falou para não tentar novamente, por isso esse dado foi salvo no sistema de aprendizagem." },
+    'Aprendizagem': { title: 'Aprendizagem', content: `Depois da minha reativação fui ensinado pelo Ashen a pescar, será armazenado, como: pegar a vara depesca, colocar os objetos necessarios, e arremassar ao mar, depois puxar quando o peixe, Fisgar em seguida pegar o peixe e tentar ligar a grelha, mas parar antes pois não tem dados suficientes para ligar a grelha e devolver o peixe ao mar. Depois de uma carga completa analisei meu arredor e numa busca encontrei o zethu junto com o outro modelo de grimlock, e depois de uma serie de dados que foram direcionados para outro arquivo, fomos tentar cozinhar, e neste momento meu sistema entrou em pane, parece que não fui feito para cozinhar, entretanto queria poder ser mais util. Tentei realizar testes no meu proprio sistema mas uma serie de erros cobriu meu sistema, e meu nucleo foi desligado, senti o valor 0, entretanto os dados fornecidos parece ter auxiliado o ashen, mas ele falou para não tentar novamente, por isso esse dado foi salvo no sistema de aprendizagem.` },
     
     'Canto_II': { title: 'Memoria I', content: 'Fui ativado depois do INCIDENTE, meus sistemas estavam em constante vibração, como se estivessem em falha, avisos frequentes depois de andar fora do armazem, encontrei uma grimlock, ela atacou, mas meus sistemas de defesa estavam danificados e não ativaram, meus dados começaram a corromper quando ele apareceu, ele me chamou para sua casa, e está cuidando de min, seus dados estão sendo alocados para um novo ambiente. tentando acessar emoções: .  .   . Acesso negado.' },
     'Canto_III': { title: 'Memoria II', content: 'Foi me ensinado o significado da palavra Pai    .   .  . Dados insificientes, caso prosseguir o erro aparecerar  .  .   . Fim dos dados' },
@@ -279,6 +279,7 @@ errorBtn.addEventListener('click', () => {
     });
 
 });
+
 
 
 
